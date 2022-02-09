@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container text-center">
+          <h1 class="display-3"><span class="glyphicon glyphicon-tent" style="top: 8px;"></span>Welcome To Blog</h1>
+          <p class="lead"><strong>View Blogs from all over the world</strong></p>
+          <hr class="my-2">
+          <p class="lead">
+            <a class="btn btn-success btn-lg" href="/campgrounds/new">Add New Blog</a>
+          </p>
+      </div>
+      </header>
+    
+    <div class="col-lg-12">
+        <!--<h3>Our Most Popular Campgrounds</h3>-->            
+        <div class="row text-center align-items-center" style="display:flex; flex-wrap:wrap">
+            <% campgrounds.forEach(function(campground){ %>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                        <a href="/campgrounds/<%= campground._id %>"><img src="<%= campground.image %>"></a>
+                        <div class="caption">
+                            <h4><%= campground.name %></h4>
+                            <em style="color: teal;">Submitted By <%= campground.author.username %></em>
+                        </div>
+                        <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-info">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
+
